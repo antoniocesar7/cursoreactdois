@@ -20,7 +20,7 @@ function App(){
         <div>
             <h1>Componente App</h1><br></br>
             <h2>Olá: {aluno}</h2>
-            <button onClick={ () => handleChangeName('Juliana Ramos Fernandes') } >
+            <button onClick={ () => handleChangeName('Asdubal) } >
                 Mudar nome</button><br></br><br></br>
             {/* <Nome aluno="Antonio" idade={30} /><br/> */}
                        
