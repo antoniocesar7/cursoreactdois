@@ -1,64 +1,40 @@
-// function App() {
-//     return (
-//         <div>
-//             <h1>Bem vindo ao meu projeto</h1>
-//         </div>
-//     );
-// }
 
-// export default App;
-import Nome from './components/Nome';
 import {useState} from 'react';//importanto o nosso hook
 function App(){
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [idade, setIdade] = useState('0');
+    const [input, setInput] = useState('');     
+    const [tarefas, setTarefas] = useState([
+        'Pagar a contat de luz',
+        'Estudar React JS'
+    ]);
 
-    const [user, setUser] = useState({})
     function handleRegister(e){
-        e.preventDefault()
-        
-        setUser({
-            nome:nome,
-            idade: idade,
-            email: email,
-        })
+        e.preventDefault();
+        setTarefas([...tarefas, input]);
+        setInput('');
+
     }
    return(
         <div>
             <h1>Cadatrando Usuário</h1>
+git
             <form onSubmit={handleRegister}>
-                <label>Nome:</label><br/>
+                <label>Nome da tarefa:</label><br/>
                 <input 
-                    placeholder='Digite o seu nome'
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    
+                    placeholder='Digite uma tarefa'
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                   
                 /><br/>
-
-                <label>Email:</label><br/>
-                <input 
-                    placeholder='Digite o seu email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                /><br/>
-
-                <label>Idade:</label><br/>
-                <input 
-                    placeholder='Digite o sua idade'
-                    value={idade}
-                    onChange={(e) => setIdade(e.target.value)}
-                />
-                <br/>
                 <button type='submit'>Registrar</button>
+            </form> 
+            <br/><br/>  
 
-            </form> <br/><br/>  
-
-            <div>
-                <span>Bem vindo: {user.nome}</span><br/>
-                <span>Idade: {user.idade}</span><br/>
-                <span>Email: {user.email}</span><br/>
-            </div>                   
+            <ul>
+                {tarefas.map( tarefa => (
+                    <li key={tarefa}>{tarefa}</li>
+                ))}
+            </ul>
+               
         </div>
     );
 }
