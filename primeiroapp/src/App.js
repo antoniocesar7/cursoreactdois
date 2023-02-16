@@ -1,11 +1,24 @@
 
-import {useState} from 'react';//importanto o nosso hook
+import {useEffect, useState} from 'react';//importanto o nosso hook
 function App(){
     const [input, setInput] = useState('');     
     const [tarefas, setTarefas] = useState([
         'Pagar a contat de luz',
         'Estudar React JS'
     ]);
+
+    useEffect(() =>{
+        const tarefasStorage = localStorage.getItem('@tarefa');
+
+        if(tarefasStorage){
+            setTarefas(JSON.parse(tarefasStorage))
+        }
+
+    }, []);
+
+    useEffect(()=>{
+        localStorage.setItem('@tarefa', JSON.stringify(tarefas))
+    }, [tarefas]);
 
     function handleRegister(e){
         e.preventDefault();
